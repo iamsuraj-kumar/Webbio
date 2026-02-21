@@ -2,196 +2,342 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Webio - Portfolio Builder</title>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Webbio – Create Your Professional Portfolio in 3 Clicks</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-<!-- Navbar -->
-<header class="navbar">
-  <div class="container nav">
-    <h2 class="logo">Webio</h2>
-
-    <nav>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <div class="logo-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M3 6 Q6 3 12 3 Q18 3 21 6 L19 10 Q16 8 12 8 Q8 8 5 10Z" fill="#3b82f6"/>
+            <path d="M5 10 Q8 8 12 8 Q16 8 19 10 L17 15 Q14 13 12 13 Q10 13 7 15Z" fill="#3b82f6" opacity="0.65"/>
+            <path d="M7 15 Q10 13 12 13 Q14 13 17 15 L15 21 Q12 19 12 19 Q12 19 9 21Z" fill="#3b82f6" opacity="0.35"/>
+          </svg>
+        </div>
+        <span class="logo-text">Webbio</span>
+      </div>
+      <div class="nav-links">
+        <a href="#">Features</a>
+        <a href="#">Themes</a>
+        <a href="#">Pricing</a>
+      </div>
+      <button class="btn-signin">Sign In</button>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
       <a href="#">Features</a>
       <a href="#">Themes</a>
       <a href="#">Pricing</a>
-      <a href="#">Login</a>
-      <a href="#" class="btn-primary">Get Started</a>
-    </nav>
-  </div>
-</header>
-
-
-<!-- Hero Section -->
-<section class="hero">
-  <div class="container hero-content">
-
-    <h1>Create your professional portfolio in <span>3 clicks.</span></h1>
-
-    <p>
-      Build beautiful portfolios in minutes. No coding needed.
-      Choose a theme, customize, and publish instantly.
-    </p>
-
-    <div class="hero-buttons">
-      <a href="#" class="btn-primary">Start for Free</a>
-      <a href="#" class="btn-secondary">View Templates</a>
+      <button class="btn-signin">Sign In</button>
     </div>
+  </nav>
 
-    <div class="preview-box">
-      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
-           alt="Preview"/>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- Steps Section -->
-<section class="steps">
-  <div class="container">
-
-    <h2>Build your site in 3 simple steps</h2>
-
-    <div class="step-grid">
-
-      <div class="step-card">
-        <h3>1</h3>
-        <h4>Import Details</h4>
-        <p>Add your resume, projects and social links.</p>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-glow hero-bg-glow--left"></div>
+    <div class="hero-bg-glow hero-bg-glow--right"></div>
+    <div class="hero-container">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Join 50,000+ Indian Professionals
       </div>
-
-      <div class="step-card">
-        <h3>2</h3>
-        <h4>Choose Theme</h4>
-        <p>Select from modern professional themes.</p>
+      <h1 class="hero-title">
+        Create Your<br/>
+        Professional Portfolio<br/>
+        in <span class="highlight">3 Clicks.</span>
+      </h1>
+      <p class="hero-sub">
+        From Bengaluru to Mumbai, transform your experience into a stunning, hosted site instantly. Stop wasting hours on builders. Just import, choose, and launch.
+      </p>
+      <div class="hero-cta">
+        <div class="cta-input-group">
+          <div class="cta-btn-upload">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Upload Resume
+          </div>
+          <input type="text" class="cta-input" placeholder="LinkedIn Profile URL" />
+          <button class="cta-arrow">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
       </div>
+    </div>
+  </section>
 
-      <div class="step-card">
-        <h3>3</h3>
-        <h4>Go Live</h4>
-        <p>Publish instantly with your custom link.</p>
+  <!-- SIMPLE PROCESS -->
+  <section class="process">
+    <div class="section-container">
+      <h2 class="section-title">A simple process</h2>
+      <div class="section-title-underline"></div>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          </div>
+          <h3>1. Import Data</h3>
+          <p>Simply upload your resume or paste your LinkedIn URL. Our AI extracts your experience instantly.</p>
+        </div>
+        <div class="process-connector"></div>
+        <div class="process-step">
+          <div class="step-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          </div>
+          <h3>2. Choose Template</h3>
+          <p>Select from our designer-made templates. Customize colors, fonts, and layouts to match your brand.</p>
+        </div>
+        <div class="process-connector"></div>
+        <div class="process-step">
+          <div class="step-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <h3>3. Launch Site</h3>
+          <p>Hit publish and get a professional URL. Your portfolio is mobile-ready and fully SEO optimized.</p>
+        </div>
       </div>
-
     </div>
+  </section>
 
-  </div>
-</section>
-
-
-<!-- Themes Section -->
-<section class="themes">
-  <div class="container">
-
-    <h2>Themes for every professional</h2>
-
-    <div class="theme-grid">
-
-      <div class="theme-card">
-        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f"/>
-        <h4>Minimal</h4>
+  <!-- TRUSTED BY HRs -->
+  <section class="trusted">
+    <div class="section-container">
+      <p class="trusted-label">TRUSTED BY HRs AT</p>
+      <div class="trusted-logos">
+        <div class="trusted-logo">
+          <svg width="110" height="32" viewBox="0 0 110 32" fill="none">
+            <text x="0" y="24" font-family="Inter,sans-serif" font-size="22" font-weight="800" fill="#64748b">Infosys</text>
+          </svg>
+        </div>
+        <div class="trusted-logo">
+          <svg width="55" height="32" viewBox="0 0 55 32" fill="none">
+            <text x="0" y="24" font-family="Inter,sans-serif" font-size="22" font-weight="800" fill="#64748b">TCS</text>
+          </svg>
+        </div>
+        <div class="trusted-logo">
+          <svg width="90" height="32" viewBox="0 0 90 32" fill="none">
+            <text x="0" y="24" font-family="Inter,sans-serif" font-size="22" font-weight="800" fill="#64748b">Wipro</text>
+          </svg>
+        </div>
+        <div class="trusted-logo">
+          <svg width="120" height="32" viewBox="0 0 120 32" fill="none">
+            <text x="0" y="24" font-family="Inter,sans-serif" font-size="22" font-weight="800" fill="#64748b">Swiggy</text>
+          </svg>
+        </div>
+        <div class="trusted-logo">
+          <svg width="100" height="32" viewBox="0 0 100 32" fill="none">
+            <text x="0" y="24" font-family="Inter,sans-serif" font-size="22" font-weight="800" fill="#64748b">Zepto</text>
+          </svg>
+        </div>
       </div>
+    </div>
+  </section>
 
-      <div class="theme-card">
-        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d"/>
-        <h4>Creative</h4>
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="section-container features-layout">
+      <div class="features-text">
+        <p class="features-label">POWERFUL FEATURES</p>
+        <h2 class="features-title">Everything you need to<br/>get hired.</h2>
+        <div class="features-list">
+          <div class="feature-item">
+            <div class="feature-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg>
+            </div>
+            <div>
+              <h4>Live Preview</h4>
+              <p>See every change in real-time as you edit. No guessing how your site will look to recruiters.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            </div>
+            <div>
+              <h4>Custom Domains</h4>
+              <p>Connect your own .in or .com domain or use our premium subdomains. Build a professional personal brand.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div>
+              <h4>SEO Optimized</h4>
+              <p>Pre-configured meta tags and schema markup ensure search engines find and index your work correctly.</p>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="theme-card">
-        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"/>
-        <h4>Developer</h4>
+      <div class="features-preview">
+        <div class="preview-card">
+          <div class="preview-topbar">
+            <span class="dot dot--red"></span>
+            <span class="dot dot--yellow"></span>
+            <span class="dot dot--green"></span>
+          </div>
+          <div class="preview-content">
+            <div class="preview-name">Priya Sharma</div>
+            <div class="preview-title-line">Product Designer &middot; Bengaluru</div>
+            <div class="preview-section-label">Work Experience</div>
+            <div class="preview-job">
+              <div class="preview-job-title">Senior UX Designer</div>
+              <div class="preview-job-company">Swiggy &middot; 2021&ndash;Present</div>
+              <div class="preview-job-desc">Led product design for consumer app serving 50M+ users across India.</div>
+            </div>
+            <div class="preview-job" style="margin-top:10px;">
+              <div class="preview-job-title">UI Designer</div>
+              <div class="preview-job-company">Razorpay &middot; 2019&ndash;2021</div>
+              <div class="preview-job-desc">Built the design system for payment dashboard from scratch.</div>
+            </div>
+          </div>
+          <div class="live-badge">
+            <span class="live-dot"></span>
+            LIVE UPDATES
+            <span class="live-sub">Viewed by 4 recruiters today &#127881;</span>
+          </div>
+        </div>
       </div>
-
     </div>
+  </section>
 
-  </div>
-</section>
-
-
-<!-- Pricing -->
-<section class="pricing">
-  <div class="container pricing-box">
-
-    <h2>Simple, fair pricing</h2>
-
-    <div class="price-card">
-
-      <h3>Pro Plan</h3>
-      <p class="price">$29<span>/month</span></p>
-
-      <ul>
-        <li>✔ Unlimited Projects</li>
-        <li>✔ Custom Domain</li>
-        <li>✔ Analytics</li>
-        <li>✔ Premium Themes</li>
-      </ul>
-
-      <a href="#" class="btn-primary">Get Started</a>
-
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="section-container">
+      <h2 class="section-title">Loved by 10,000+ creators</h2>
+      <p class="section-sub">Join thousands of Indian professionals who have accelerated their careers.</p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p>"Webbio turned my messy resume into a stunning portfolio in under 5 minutes. I landed 3 interviews at top Bengaluru startups the following week."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">AS</div>
+            <div>
+              <div class="author-name">Ananya Singh</div>
+              <div class="author-role">Product Designer, Bengaluru</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p>"The SEO optimization is real. My portfolio now shows up on the first page of Google. Got a call from Infosys within a week of publishing!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">RK</div>
+            <div>
+              <div class="author-name">Rahul Kapoor</div>
+              <div class="author-role">Software Engineer, Hyderabad</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p>"I love the live preview feature. It makes customizing templates so intuitive and fun. Landed my dream job at a Mumbai fintech!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">NP</div>
+            <div>
+              <div class="author-name">Neha Patel</div>
+              <div class="author-role">Marketing Specialist, Mumbai</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-  </div>
-</section>
-
-
-<!-- CTA -->
-<section class="cta">
-  <div class="container">
-
-    <h2>Ready to land your dream job?</h2>
-    <p>Create your portfolio today.</p>
-
-    <a href="#" class="btn-primary">Create Portfolio</a>
-
-  </div>
-</section>
-
-
-<!-- Footer -->
-<footer class="footer">
-
-  <div class="container footer-grid">
-
-    <div>
-      <h3>Webio</h3>
-      <p>Build your professional presence online.</p>
+  <!-- PRICING -->
+  <section class="pricing">
+    <div class="section-container">
+      <h2 class="section-title">Simple, transparent pricing</h2>
+      <p class="section-sub">Start for free, upgrade when you're ready.</p>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="plan-name">Basic</div>
+          <div class="plan-price"><span class="plan-amount">&#8377;0</span><span class="plan-period">/forever</span></div>
+          <ul class="plan-features">
+            <li class="active"><span class="check check--active">&#10003;</span> 1 Designer Template</li>
+            <li class="active"><span class="check check--active">&#10003;</span> webbio.in Subdomain</li>
+            <li class="active"><span class="check check--active">&#10003;</span> Mobile Responsive Site</li>
+            <li class="inactive"><span class="check check--inactive">&#10007;</span> Custom Domains</li>
+          </ul>
+          <button class="btn-plan btn-plan--outline">Get Started Free</button>
+        </div>
+        <div class="pricing-card pricing-card--pro">
+          <div class="recommended-badge">RECOMMENDED</div>
+          <div class="plan-name">Pro</div>
+          <div class="plan-price"><span class="plan-amount">&#8377;999</span><span class="plan-period">/month</span></div>
+          <ul class="plan-features">
+            <li class="active"><span class="check check--active">&#10003;</span> All Free Features</li>
+            <li class="active"><span class="check check--active">&#10003;</span> Unlimited Templates</li>
+            <li class="active"><span class="check check--active">&#10003;</span> Custom Domain Connection</li>
+            <li class="active"><span class="check check--active">&#10003;</span> Advanced Analytics</li>
+            <li class="active"><span class="check check--active">&#10003;</span> Remove Webbio Branding</li>
+          </ul>
+          <button class="btn-plan btn-plan--primary">Go Pro Now</button>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div>
-      <h4>Product</h4>
-      <a href="#">Features</a>
-      <a href="#">Themes</a>
-      <a href="#">Pricing</a>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="logo-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M3 6 Q6 3 12 3 Q18 3 21 6 L19 10 Q16 8 12 8 Q8 8 5 10Z" fill="#3b82f6"/>
+              <path d="M5 10 Q8 8 12 8 Q16 8 19 10 L17 15 Q14 13 12 13 Q10 13 7 15Z" fill="#3b82f6" opacity="0.65"/>
+              <path d="M7 15 Q10 13 12 13 Q14 13 17 15 L15 21 Q12 19 12 19 Q12 19 9 21Z" fill="#3b82f6" opacity="0.35"/>
+            </svg>
+          </div>
+          <span>Webbio</span>
+        </div>
+        <p class="footer-tagline">Empowering Indian professionals to showcase their best work with AI-driven portfolios.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="#" aria-label="Share"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Product</h5>
+          <a href="#">Features</a>
+          <a href="#">Themes</a>
+          <a href="#">Pricing</a>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <a href="#">About</a>
+          <a href="#">Careers</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h5>Support</h5>
+          <a href="#">Help Center</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+      <div class="footer-copy-block">
+        <p>&copy; 2024<br/>Webbio. Built for<br/>modern professionals.</p>
+        <p class="footer-handcrafted">Made with &#10084;&#65039;<br/>in India.</p>
+      </div>
     </div>
+  </footer>
 
-    <div>
-      <h4>Company</h4>
-      <a href="#">About</a>
-      <a href="#">Blog</a>
-      <a href="#">Careers</a>
-    </div>
-
-    <div>
-      <h4>Support</h4>
-      <a href="#">Help</a>
-      <a href="#">Contact</a>
-      <a href="#">Privacy</a>
-    </div>
-
-  </div>
-
-  <p class="copyright">
-    © 2026 Webio. All rights reserved.
-  </p>
-
-</footer>
-
-
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
