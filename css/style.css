@@ -176,61 +176,6 @@ nav button {
   display: block;
 }
 
-/* TESTIMONIALS */
-.testimonials {
-  padding: 80px 60px;
-  text-align: center;
-  border-bottom: 1px solid #222;
-}
-
-.testimonials h2 {
-  font-size: 36px;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.testimonials .sub {
-  color: #888;
-  font-size: 14px;
-  margin-bottom: 50px;
-}
-
-.testimonial-grid {
-  display: flex;
-  gap: 0;
-  border: 1px solid #222;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.testimonial {
-  flex: 1;
-  padding: 36px;
-  border-right: 1px solid #222;
-  text-align: left;
-}
-
-.testimonial:last-child {
-  border-right: none;
-}
-
-.testimonial p {
-  color: #888;
-  font-size: 14px;
-  line-height: 1.7;
-  margin-bottom: 24px;
-}
-
-.testimonial .name {
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.testimonial .role {
-  color: #555;
-  font-size: 13px;
-}
-
 /* FOOTER */
 footer {
   text-align: center;
