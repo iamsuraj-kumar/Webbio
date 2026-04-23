@@ -2,12 +2,82 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Webbio</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; background-color: #0d0d0d; color: #ffffff; }
+    a { text-decoration: none; color: inherit; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 60px; border-bottom: 1px solid #222; }
+    nav .logo { font-size: 20px; font-weight: 700; }
+    nav ul { list-style: none; display: flex; gap: 30px; color: #888; }
+    nav .nav-right { display: flex; align-items: center; gap: 14px; }
+    #user-avatar { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; border: 2px solid #3b6ef8; display: none; cursor: pointer; }
+    #user-name-nav { font-size: 13px; color: #aaa; display: none; }
+    nav button { background: #3b6ef8; color: white; border: none; padding: 10px 20px; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 14px; cursor: pointer; }
+    #sign-out-btn { background: transparent; border: 1px solid #333; color: #888; padding: 8px 16px; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 13px; cursor: pointer; display: none; }
+    #sign-out-btn:hover { border-color: #555; color: #fff; }
+    .hero { text-align: center; padding: 100px 60px; border-bottom: 1px solid #222; }
+    .hero p.badge { color: #3b6ef8; font-size: 13px; margin-bottom: 20px; }
+    .hero h1 { font-size: 60px; font-weight: 700; line-height: 1.1; margin-bottom: 20px; }
+    .hero h1 span { color: #3b6ef8; }
+    .hero p.sub { color: #888; font-size: 15px; margin-bottom: 40px; }
+    .hero-btn { background: #3b6ef8; color: white; border: none; padding: 14px 36px; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: background .2s; }
+    .hero-btn:hover { background: #5580ff; }
+    .steps { display: flex; text-align: center; border-bottom: 1px solid #222; }
+    .step { flex: 1; padding: 60px 40px; border-right: 1px solid #222; }
+    .step:last-child { border-right: none; }
+    .step .icon { font-size: 30px; margin-bottom: 16px; }
+    .step h3 { font-size: 18px; margin-bottom: 10px; }
+    .step p { color: #888; font-size: 14px; line-height: 1.7; }
+    .features { display: flex; align-items: center; gap: 60px; padding: 80px 60px; border-bottom: 1px solid #222; }
+    .features-text { flex: 1; }
+    .features-text h2 { font-size: 36px; font-weight: 700; margin-bottom: 30px; }
+    .feature { margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #222; }
+    .feature:last-child { border-bottom: none; margin-bottom: 0; }
+    .feature h4 { font-size: 16px; margin-bottom: 6px; }
+    .feature p { color: #888; font-size: 14px; }
+    .features-image { flex: 1; border: 1px solid #333; border-radius: 12px; overflow: hidden; background: #111; height: 320px; display: flex; align-items: center; justify-content: center; color: #333; font-size: 14px; }
+    footer { text-align: center; padding: 24px; border-top: 1px solid #222; color: #444; font-size: 13px; }
+
+    /* ── LOGIN MODAL ── */
+    #login-overlay {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,.75);
+      backdrop-filter: blur(8px); z-index: 9999;
+      align-items: center; justify-content: center;
+    }
+    #login-overlay.show { display: flex; }
+    .login-card {
+      background: #141414; border: 1px solid #2a2a2a; border-radius: 20px;
+      padding: 48px 44px; width: 100%; max-width: 420px; text-align: center;
+      box-shadow: 0 40px 80px rgba(0,0,0,.6);
+      animation: slide-in .35s cubic-bezier(.34,1.56,.64,1);
+    }
+    @keyframes slide-in { from { transform: scale(.88) translateY(20px); opacity: 0; } to { transform: none; opacity: 1; } }
+    .login-card .lc-logo { font-size: 22px; font-weight: 700; margin-bottom: 28px; color: #fff; }
+    .login-card h2 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+    .login-card p { color: #888; font-size: 14px; margin-bottom: 36px; line-height: 1.6; }
+    .google-btn {
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      width: 100%; background: #fff; color: #1a1a1a;
+      border: none; border-radius: 10px; padding: 14px 20px;
+      font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 600;
+      cursor: pointer; transition: all .2s; margin-bottom: 14px;
+    }
+    .google-btn:hover { background: #f0f0f0; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(255,255,255,.12); }
+    .google-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .login-close { background: none; border: none; color: #555; font-size: 13px; cursor: pointer; margin-top: 8px; font-family: 'Poppins', sans-serif; }
+    .login-close:hover { color: #888; }
+
+    /* toast */
+    #toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px); background: #1a1a1a; border: 1px solid #333; color: #fff; font-size: 13px; padding: 12px 24px; border-radius: 8px; opacity: 0; transition: all .3s; z-index: 9999; pointer-events: none; white-space: nowrap; }
+    #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  </style>
 </head>
 <body>
 
-  <!-- Nav bar -->
   <nav>
     <div class="logo">Webbio</div>
     <ul>
@@ -15,61 +85,168 @@
       <li><a href="#">Themes</a></li>
       <li><a href="#">Pricing</a></li>
     </ul>
-    <button>Sign In</button>
+    <div class="nav-right">
+      <span id="user-name-nav"></span>
+      <img id="user-avatar" src="" alt="avatar">
+      <button id="sign-in-btn" onclick="openLogin()">Sign In</button>
+      <button id="sign-out-btn" onclick="signOut()">Sign Out</button>
+    </div>
   </nav>
 
-  <!-- Hero -->
   <section class="hero">
     <p class="badge">⭐ Join 50,000+ Professionals</p>
     <h1>Create Your Professional<br>Portfolio in <span>3 Clicks.</span></h1>
     <p class="sub">Transform your experience into a stunning, hosted site instantly.<br>Just import, choose, and launch.</p>
-    <button class="hero-btn">Start Building</button>
+    <a href="#" class="hero-btn" onclick="handleStartBuilding(event)">Start Building</a>
   </section>
 
-  <!-- Steps -->
   <div class="steps">
-    <div class="step">
-      <div class="icon">📥</div>
-      <h3>1. Import Data</h3>
-      <p>Upload your resume or paste your LinkedIn URL. Our AI extracts your experience instantly.</p>
-    </div>
-    <div class="step">
-      <div class="icon">🎨</div>
-      <h3>2. Choose Template</h3>
-      <p>Select from designer-made templates. Customize colors, fonts, and layouts to match your brand.</p>
-    </div>
-    <div class="step">
-      <div class="icon">🚀</div>
-      <h3>3. Launch Site</h3>
-      <p>Hit publish and get a professional URL. Your portfolio is mobile-ready and fully SEO optimized.</p>
-    </div>
+    <div class="step"><div class="icon">📥</div><h3>1. Import Data</h3><p>Upload your resume or paste your LinkedIn URL. Our AI extracts your experience instantly.</p></div>
+    <div class="step"><div class="icon">🎨</div><h3>2. Choose Template</h3><p>Select from designer-made templates. Customize colors, fonts, and layouts to match your brand.</p></div>
+    <div class="step"><div class="icon">🚀</div><h3>3. Launch Site</h3><p>Hit publish and get a professional URL. Your portfolio is mobile-ready and fully SEO optimized.</p></div>
   </div>
 
-  <!-- Features -->
   <section class="features">
     <div class="features-text">
       <h2>Everything you need<br>to get hired.</h2>
-      <div class="feature">
-        <h4>👁 Live Preview</h4>
-        <p>See every change in real-time. No guessing how your site will look to recruiters.</p>
-      </div>
-      <div class="feature">
-        <h4>🌐 Custom Domains</h4>
-        <p>Connect your own .com domain or use our premium subdomains.</p>
-      </div>
-      <div class="feature">
-        <h4>🔍 SEO Optimized</h4>
-        <p>Meta tags and schema markup ensure search engines find your work.</p>
-      </div>
+      <div class="feature"><h4>👁 Live Preview</h4><p>See every change in real-time. No guessing how your site will look to recruiters.</p></div>
+      <div class="feature"><h4>🌐 Custom Domains</h4><p>Connect your own .com domain or use our premium subdomains.</p></div>
+      <div class="feature"><h4>🔍 SEO Optimized</h4><p>Meta tags and schema markup ensure search engines find your work.</p></div>
     </div>
-    <div class="features-image">
-      <img src="src/preview.png" alt="Portfolio Preview">
-    </div>
+    <div class="features-image">Portfolio Preview</div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>Suraj Kumar - CS 23411206 - 3CSE2.</p>
-  </footer>
+  <footer><p>Suraj Kumar - CS 23411206 - 3CSE2.</p></footer>
+
+  <!-- LOGIN MODAL -->
+  <div id="login-overlay">
+    <div class="login-card">
+      <div class="lc-logo">Webbio</div>
+      <h2>Sign in to continue</h2>
+      <p>Create your free portfolio in minutes.<br>Sign in with Google to get started.</p>
+      <button class="google-btn" onclick="signInWithGoogle()">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        Continue with Google
+      </button>
+      <button class="login-close" onclick="closeLogin()">Maybe later</button>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut as fbSignOut }
+      from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+    // ── YOUR FIREBASE CONFIG ──────────────────────────────────────
+    // Replace the values below with your Firebase project config.
+    // Get it from: Firebase Console → Project Settings → Your apps → Web app
+    const firebaseConfig = {
+      apiKey: "AIzaSyApHgLWS58BrtePmIrgTSikrKlIUcYkGr4",
+      authDomain: "paperlight-qm4yx.firebaseapp.com",
+      projectId: "paperlight-qm4yx",
+      storageBucket: "paperlight-qm4yx.firebasestorage.app",
+      messagingSenderId: "138919165701",
+      appId: "1:138919165701:web:3e8cfbfd7698473ab0416c"
+    };
+    // ─────────────────────────────────────────────────────────────
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    // Expose to window for onclick handlers
+    window._auth = auth;
+    window._provider = provider;
+    window._fbSignOut = fbSignOut;
+
+    // Auth state
+    onAuthStateChanged(auth, user => {
+      const signInBtn = document.getElementById('sign-in-btn');
+      const signOutBtn = document.getElementById('sign-out-btn');
+      const avatarEl = document.getElementById('user-avatar');
+      const nameEl = document.getElementById('user-name-nav');
+
+      if (user) {
+        signInBtn.style.display = 'none';
+        signOutBtn.style.display = 'inline-block';
+        avatarEl.src = user.photoURL || '';
+        avatarEl.style.display = user.photoURL ? 'block' : 'none';
+        nameEl.textContent = user.displayName?.split(' ')[0] || '';
+        nameEl.style.display = 'inline';
+        // Store user info for builder page
+        sessionStorage.setItem('wb_user', JSON.stringify({
+          uid: user.uid,
+          name: user.displayName,
+          email: user.email,
+          photo: user.photoURL
+        }));
+        closeLogin();
+        // If we were redirecting to builder, go now
+        if (window._pendingRedirect) {
+          window._pendingRedirect = false;
+          window.location.href = 'builder.html';
+        }
+      } else {
+        signInBtn.style.display = 'inline-block';
+        signOutBtn.style.display = 'none';
+        avatarEl.style.display = 'none';
+        nameEl.style.display = 'none';
+        sessionStorage.removeItem('wb_user');
+      }
+    });
+
+    window.signInWithGoogle = async () => {
+      try {
+        await signInWithPopup(auth, provider);
+        showToast('Signed in successfully!');
+      } catch (e) {
+        if (e.code !== 'auth/popup-closed-by-user') {
+          showToast('Sign-in failed. Please try again.');
+        }
+      }
+    };
+
+    window.signOut = async () => {
+      await fbSignOut(auth);
+      showToast('Signed out.');
+    };
+  </script>
+
+  <script>
+    function openLogin() {
+      document.getElementById('login-overlay').classList.add('show');
+    }
+    function closeLogin() {
+      document.getElementById('login-overlay').classList.remove('show');
+    }
+    function handleStartBuilding(e) {
+      e.preventDefault();
+      const user = sessionStorage.getItem('wb_user');
+      if (user) {
+        window.location.href = 'builder.html';
+      } else {
+        window._pendingRedirect = true;
+        openLogin();
+      }
+    }
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2800);
+    }
+    // Close modal on overlay click
+    document.getElementById('login-overlay').addEventListener('click', function(e) {
+      if (e.target === this) closeLogin();
+    });
+  </script>
 </body>
 </html>
