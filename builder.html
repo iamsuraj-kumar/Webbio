@@ -471,7 +471,6 @@
     display: none;
     background: #0d0d0d;
   }
-  #page-live.active { display: block; }
 
   .live-screen {
     min-height: 100vh;
@@ -641,7 +640,7 @@
     <div class="field" style="margin-bottom:24px">
       <label>Profile Photo</label>
       <div class="avatar-upload-wrap">
-        <div class="avatar-preview" id="avatar-preview" onclick="document.getElementById('avatar-file-input').click()">🧑</div>
+        <div class="avatar-preview" id="avatar-preview" onclick="document.getElementById('avatar-file-input').click()"><img src="user_placeholder.png" alt="avatar" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
         <div>
           <button class="avatar-upload-btn" type="button" onclick="document.getElementById('avatar-file-input').click()">📷 Upload Photo</button>
           <input type="file" id="avatar-file-input" accept="image/*" onchange="handleAvatarUpload(this)">
@@ -739,15 +738,6 @@
         <div class="field" style="margin-top:14px">
           <label>Description</label>
           <textarea class="proj-desc" placeholder="What did you build? What tech did you use? What problem did it solve?"></textarea>
-        </div>
-        <div class="field" style="margin-top:14px">
-          <label>Project Screenshot / Preview Image</label>
-          <div style="display:flex;align-items:center;gap:14px;margin-top:4px">
-            <div class="proj-img-preview" style="width:80px;height:52px;border-radius:8px;background:#0a0a0a;border:1px dashed #333;display:flex;align-items:center;justify-content:center;font-size:20px;overflow:hidden;flex-shrink:0;">🖼</div>
-            <button class="avatar-upload-btn" type="button" onclick="triggerProjImg(this)">📸 Add Screenshot</button>
-            <input type="file" class="proj-img-input" accept="image/*" onchange="handleProjImg(this)" style="display:none">
-          </div>
-          <p class="hint" style="margin-top:6px">Shows as project preview card thumbnail</p>
         </div>
       </div>
     </div>
@@ -1057,18 +1047,29 @@
 
   // ─── PAGE NAVIGATION ───
   function showPage(id) {
+    // Hide all .page divs
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    // Also hide/show page-live separately since it's outside the .page system
     const livePage = document.getElementById('page-live');
     if (id === 'page-live') {
-      livePage.classList.add('active');
+      livePage.style.display = 'block';
     } else {
-      livePage.classList.remove('active');
-      document.getElementById(id).classList.add('active');
+      livePage.style.display = 'none';
+      const target = document.getElementById(id);
+      if (target) target.classList.add('active');
     }
     window.scrollTo(0,0);
   }
   function goHome() { window.location.href = 'index.html'; }
-  function goToTemplates() { showPage('page-templates'); }
+  function goToTemplates() {
+    const name = document.getElementById('f-name').value.trim();
+    const role = document.getElementById('f-role').value.trim();
+    const username = document.getElementById('f-username').value.trim();
+    if (!name) { showToast('⚠ Please enter your full name'); document.getElementById('f-name').focus(); return; }
+    if (!role) { showToast('⚠ Please enter your job title / role'); document.getElementById('f-role').focus(); return; }
+    if (!username) { showToast('⚠ Please enter a portfolio username'); document.getElementById('f-username').focus(); return; }
+    showPage('page-templates');
+  }
 
   // ─── SAVE STATUS INDICATOR ───
   function showSaveStatus(state) {
@@ -1168,14 +1169,6 @@
           <div class="field" style="margin-top:14px">
             <label>Description</label>
             <textarea class="proj-desc">${safe(proj.desc||'')}</textarea>
-          </div>
-          <div class="field" style="margin-top:14px">
-            <label>Project Screenshot</label>
-            <div style="display:flex;align-items:center;gap:14px;margin-top:4px">
-              <div class="proj-img-preview" style="width:80px;height:52px;border-radius:8px;background:#0a0a0a;border:1px dashed #333;display:flex;align-items:center;justify-content:center;font-size:20px;overflow:hidden;flex-shrink:0;">🖼</div>
-              <button class="avatar-upload-btn" type="button" onclick="triggerProjImg(this)">📸 Add Screenshot</button>
-              <input type="file" class="proj-img-input" accept="image/*" onchange="handleProjImg(this)" style="display:none">
-            </div>
           </div>`;
         projSec.appendChild(div);
       });
@@ -1206,7 +1199,7 @@
     reader.onload = e => {
       avatarDataURL = e.target.result;
       const preview = document.getElementById('avatar-preview');
-      preview.innerHTML = `<img src="${avatarDataURL}" alt="avatar">`;
+      preview.innerHTML = `<img src="${avatarDataURL}" alt="avatar" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`;
     };
     reader.readAsDataURL(file);
   }
@@ -1298,14 +1291,6 @@
         <div class="field" style="margin-top:14px">
           <label>Description</label>
           <textarea class="proj-desc" placeholder="What did you build?"></textarea>
-        </div>
-        <div class="field" style="margin-top:14px">
-          <label>Project Screenshot</label>
-          <div style="display:flex;align-items:center;gap:14px;margin-top:4px">
-            <div class="proj-img-preview" style="width:80px;height:52px;border-radius:8px;background:#0a0a0a;border:1px dashed #333;display:flex;align-items:center;justify-content:center;font-size:20px;overflow:hidden;flex-shrink:0;">🖼</div>
-            <button class="avatar-upload-btn" type="button" onclick="triggerProjImg(this)">📸 Add Screenshot</button>
-            <input type="file" class="proj-img-input" accept="image/*" onchange="handleProjImg(this)" style="display:none">
-          </div>
         </div>`;
     }
     section.appendChild(div);
@@ -1350,13 +1335,11 @@
     document.querySelectorAll('#proj-section .proj-card-item').forEach(card => {
       const name = card.querySelector('.proj-name')?.value.trim();
       if (!name) return;
-      const imgInput = card.querySelector('.proj-img-input');
       projects.push({
         name, link: card.querySelector('.proj-link')?.value.trim(),
         github: card.querySelector('.proj-github')?.value.trim(),
         tags: card.querySelector('.proj-tags')?.value.trim(),
         desc: card.querySelector('.proj-desc')?.value.trim(),
-        image: imgInput?.dataset.dataurl || '',
       });
     });
     const achievements = (document.getElementById('f-achievements').value || '')
@@ -1441,10 +1424,6 @@
     t.classList.add('show');
     setTimeout(() => t.classList.remove('show'), 3000);
   }
-
-  // helpers
-  const c = (val, wrap='', cls='') => val ? (wrap ? `<${wrap} class="${cls}">${val}</${wrap}>` : val) : '';
-  const safe = str => (str||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 
   // helpers
   const c = (val, wrap='', cls='') => val ? (wrap ? `<${wrap} class="${cls}">${val}</${wrap}>` : val) : '';
